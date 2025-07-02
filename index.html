@@ -209,7 +209,8 @@
                 questions: [
                     { question: "Qual o prazo para o pagamento da rescisão?", answer: "O pagamento da rescisão deve ser efetuado em até 10 dias corridos após o término do contrato." },
                     { question: "Onde posso obter meu Termo de Rescisão de Contrato de Trabalho (TRCT)?", answer: "O Termo de Rescisão é disponibilizado após o pagamento ou enviado por e-mail. Verifique sua caixa de entrada e spam." },
-                    { question: "Como funciona a homologação do desligamento?", answer: "A homologação ocorre para garantir que todos os direitos trabalhistas foram devidamente pagos e é realizada de forma online após o pagamento da Rescisão." }
+                    { question: "Como funciona a homologação do desligamento?", answer: "A homologação ocorre para garantir que todos os direitos trabalhistas foram devidamente pagos e é realizada de forma online após o pagamento da Rescisão." },
+                    { question: "Como é feita a baixa na Carteira de Trabalho?", answer: "A baixa na carteira de trabalho será transmitida pelo e-Social. Após a data de demissão, o colaborador desligado poderá visualizar as anotações pelo aplicativo Carteira de Trabalho Digital, não sendo necessária a anotação na carteira de trabalho física."}
                 ]
             },
             {
@@ -372,7 +373,7 @@
 
             // Adicionar 10 dias à data de demissão
             const paymentDate = new Date(dismissalDate);
-            paymentDate.setDate(dismissalDate.getDate() + 10);
+            paymentDate.setDate(dismissalDate.getDate() + 9);
 
             // Formatar a data para DD/MM/YYYY
             const formattedPaymentDate = paymentDate.toLocaleDateString('pt-BR');
