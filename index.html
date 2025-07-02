@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Pós-Desligamento SONDA</title>
+    <!-- Tailwind CSS CDN for quick and responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind configuration to use Inter font and custom blue color -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'sonda-blue': '#205DF5', /* Custom blue color for SONDA branding */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts for Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base font for the body */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Soft background color */
+        }
+        /* Additional styles for centering and a clean look */
+        .container-app {
+            max-width: 960px; /* Maximum width for main content */
+            margin: 2rem auto;
+            background-color: #ffffff;
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            padding: 1.5rem;
+        }
+        /* Navigation button transition effect */
+        .nav-button {
+            transition: all 0.2s ease-in-out;
+        }
+        /* Active navigation button style */
+        .nav-button.active {
+            background-color: #205DF5; /* Active button color changed to Sonda Blue */
+            color: white;
+        }
+        /* FAQ item and category item hover effect */
+        .faq-question, .faq-category-item {
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .faq-question:hover, .faq-category-item:hover {
+            background-color: #f3f4f6;
+        }
+        /* FAQ answer collapse/expand transition */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .faq-answer.show {
+            max-height: 200px; /* Adjust as per expected max answer size */
+            transition: max-height 0.5s ease-in;
+        }
+        /* Style for contact links */
+        .contact-link {
+            color: #205DF5; /* Link color changed to Sonda Blue */
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+        .contact-link:hover {
+            color: #1a4da3; /* Darker shade of Sonda Blue on hover */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center py-8">
+    <div class="container-app w-full p-6 sm:p-8 md:p-10">
+        <!-- SONDA Logo -->
+        <div class="flex justify-center mb-6">
+            <img src="uploaded:image_e08d38.png-cdebcfaa-7887-40bc-a2f0-4bb67cd1dd73"
+                 onerror="this.onerror=null;this.src='file:/C:/Users/gustavo.torres/OneDrive%20-%20Sonda%20S.A/P%C3%B3s-Desligamento/Logo-sonda.svg'"
+                 alt="Logo SONDA" class="h-12 w-auto object-contain">
+            <!-- The 'src' attribute now points to your uploaded SONDA logo.
+                 The 'onerror' provides a placeholder if the image fails to load. -->
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">
+            Portal Pós-Desligamento
+        </h1>
+
+        <!-- Main Navigation -->
+        <nav class="flex justify-center mb-8 space-x-2 sm:space-x-4">
+            <button id="nav-faqs" class="nav-button px-4 py-2 sm:px-6 sm:py-3 bg-sonda-blue text-white rounded-lg font-semibold shadow-md active" onclick="showSection('faqs')">
+                FAQs
+            </button>
+            <button id="nav-contatos" class="nav-button px-4 py-2 sm:px-6 sm:py-3 bg-gray-200 text-gray-800 rounded-lg font-semibold shadow-md" onclick="showSection('contatos')">
+                Contatos
+            </button>
+            <button id="nav-pagamentos" class="nav-button px-4 py-2 sm:px-6 sm:py-3 bg-gray-200 text-gray-800 rounded-lg font-semibold shadow-md" onclick="showSection('pagamentos')">
+                Pagamentos
+            </button>
+            <button id="nav-pesquisa" class="nav-button px-4 py-2 sm:px-6 sm:py-3 bg-gray-200 text-gray-800 rounded-lg font-semibold shadow-md" onclick="showSection('pesquisa')">
+                Pesquisa de Desligamento
+            </button>
+        </nav>
+
+        <!-- FAQs Section -->
+        <div id="faqs-section" class="section active">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">Perguntas Frequentes</h2>
+            
+            <!-- FAQ Categories -->
+            <div id="faq-categories" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <!-- Categories will be loaded here via JS -->
+            </div>
+
+            <!-- Question and Answer List for Selected Category -->
+            <div id="faq-list" class="hidden">
+                <button class="mb-4 text-sonda-blue hover:text-blue-700 font-medium" onclick="showCategories()">
+                    &larr; Voltar para Categorias
+                </button>
+                <h3 id="current-category-title" class="text-xl font-semibold text-gray-700 mb-4"></h3>
+                <div id="questions-answers-container">
+                    <!-- Questions and answers will be loaded here via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Channels Section -->
+        <div id="contatos-section" class="section hidden">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">Canais de Contato</h2>
+            <div class="space-y-6">
+                <!-- Equipe desligamento -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Equipe Desligamento</h3>
+                    <p class="text-gray-600 mb-2">
+                        Para dúvidas sobre documentação, processo de desligamento, FGTS ou agendamento de exame demissional.
+                    </p>
+                    <p class="text-gray-700">
+                        <strong class="block sm:inline">Telefone (Apenas WhatsApp):</strong>
+                        <a href="tel:+5511990210493" class="contact-link ml-1">(11) 99021-0493</a>
+                    </p>
+                    <p class="text-gray-700">
+                        <strong class="block sm:inline">E-mail:</strong>
+                        <a href="mailto:desligamento.br@sonda.com" class="contact-link ml-1">desligamentos.br@sonda.com</a>
+                    </p>
+                </div>
+
+                <!-- Benefícios -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Equipe Benefícios</h3>
+                    <p class="text-gray-600 mb-2">
+                        Avaliar a viabilidade de manutenção do convênio médico.
+                    </p>
+                    <p class="text-gray-700">
+                        <strong class="block sm:inline">Telefone:</strong>
+                        <a href="tel:+551198111-2256" class="contact-link ml-1">(11) 98111-2256</a>
+                    </p>
+                    <p class="text-gray-700">
+                        <strong class="block sm:inline">E-mail:</strong>
+                        <a href="mailto:eliana.lecaviez" class="contact-link ml-1">eliana.lecaviez@sonda.com</a>
+                        <a href="mailto:almir.oliveira@sonda.com" class="contact-link ml-1">almir.oliveira@sonda.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Status Notifications Section -->
+        <div id="pagamentos-section" class="section hidden">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">Status de Pagamentos</h2>
+            <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                <p class="text-gray-600 mb-4">
+                    Aqui você pode acompanhar o status dos seus pagamentos pós-desligamento.
+                </p>
+                <!-- Dismissal date input field and calculation button -->
+                <div class="mb-6">
+                    <label for="dismissal-date" class="block text-gray-700 text-sm font-bold mb-2">
+                        Informe sua Data de Demissão:
+                    </label>
+                    <div class="flex flex-col sm:flex-row gap-4 items-center">
+                        <input
+                            type="date"
+                            id="dismissal-date"
+                            class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-sonda-blue"
+                        />
+                        <button
+                            onclick="calculateRescisaoDate()"
+                            class="bg-sonda-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-200 ease-in-out w-full sm:w-auto"
+                        >
+                            Calcular Prazo Rescisão
+                        </button>
+                    </div>
+                    <p id="rescisao-payment-date" class="mt-4 text-green-700 font-semibold hidden">
+                        <!-- Calculated date will be displayed here -->
+                    </p>
+                    <p id="date-error" class="mt-2 text-red-500 text-sm hidden">
+                        <!-- Date error messages here -->
+                    </p>
+                </div>
+
+                <div id="payment-status-container" class="space-y-3">
+                    <!-- Payment status will be loaded here via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Pesquisa de Desligamento Section -->
+        <div id="pesquisa-section" class="section hidden">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">Pesquisa de Desligamento</h2>
+            <div class="bg-gray-50 p-6 rounded-lg shadow-sm text-center">
+                <p class="text-gray-600 mb-4">
+                    Sua opinião é muito importante para nós! Por favor, preencha nossa pesquisa de desligamento para nos ajudar a melhorar continuamente.
+                </p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1234567890/viewform" target="_blank" class="inline-block bg-sonda-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-200 ease-in-out">
+                    Acessar Pesquisa
+                </a>
+                <p class="text-sm text-gray-500 mt-2">
+                    (O link abrirá em uma nova aba.)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data for FAQs
+        const faqsData = [
+            {
+                category: "Rescisão",
+                questions: [
+                    { question: "Qual o prazo para o pagamento da rescisão?", answer: "O pagamento da rescisão deve ser efetuado em até 10 dias corridos após o término do contrato." },
+                    { question: "Onde posso obter meu Termo de Rescisão de Contrato de Trabalho (TRCT)?", answer: "O Termo de Rescisão é disponibilizado após o pagamento ou enviado por e-mail. Verifique sua caixa de entrada e spam." },
+                    { question: "Como funciona a homologação do desligamento?", answer: "A homologação ocorre para garantir que todos os direitos trabalhistas foram devidamente pagos e é realizada de forma online após o pagamento da Rescisão." }
+                ]
+            },
+            {
+                category: "FGTS",
+                questions: [
+                    { question: "Como sacar o FGTS após o desligamento?", answer: "Para sacar o FGTS, não é necessário ir até uma agência da Caixa. Basta cadastrar uma conta bancária no aplicativo do FGTS e o valor será depositado diretamente." },
+                    { question: "Qual o prazo para a liberação da chave do FGTS?", answer: "Não é necessário comparecer a uma agência da Caixa para sacar o FGTS. Após a comunicação da rescisão no FGTS Digital, a liberação do valor ocorre em até 5 dias úteis. Para receber, basta cadastrar uma conta bancária no aplicativo do FGTS — o valor será depositado automaticamente, sem necessidade de chave ou comparecimento presencial." }
+                ]
+            },
+            {
+                category: "Seguro-Desemprego",
+                questions: [
+                    { question: "Como solicitar o seguro-desemprego?", answer: 'Para solicitar o seguro-desemprego, é necessário o código de requerimento. Solicite esse código pelo e-mail: <a href="mailto:desligamentos.br@sonda.com" class="contact-link">desligamentos.br@sonda.com</a>. Após receber o código, você pode dar entrada no benefício pelos seguintes canais: Aplicativo Carteira de Trabalho Digital, Portal Gov.br, Presencialmente nas Superintendências Regionais do Trabalho (SRT)' },
+                    { question: "Quais documentos são necessários para o seguro-desemprego?", answer: "Geralmente são necessários: Requerimento do Seguro-Desemprego (fornecido pela empresa), Carteira de Trabalho e Previdência Social, documento de identidade, CPF, comprovante de inscrição no PIS/PASEP e comprovante dos 3 últimos salários." }
+                ]
+            },
+            {
+                category: "Plano de Saúde",
+                questions: [
+                    { question: "Posso manter meu plano de saúde após o desligamento?", answer: "Sim, em alguns casos é possível. Se o desligamento for sem justa causa, você pode ter direito à manutenção do plano de saúde nas mesmas condições de cobertura, desde que assuma integralmente o pagamento do benefício. Consulte a área de benefícios para mais detalhes e prazos." },
+                    { question: "Até quando meu plano de saúde empresarial estará ativo?", answer: "O plano de saúde empresarial geralmente é mantido por um período de 30 dias após o desligamento. Após esse período, as opções de portabilidade ou manutenção devem ser negociadas diretamente com a operadora do plano, caso você opte por seguir com o benefício." }
+                ]
+            },
+            {
+                category: "Agendamento de Exame Demissional",
+                questions: [
+                    { question: "Como solicitar o agendamento do exame demissional?", answer: 'Para solicitar o agendamento do exame demissional, envie um e-mail para <a href="mailto:desligamentos.br@sonda.com" class="contact-link">desligamentos.br@sonda.com</a>.' }
+                ]
+            }
+        ];
+
+        // Data for Payment Status (now with fixed and dynamic templates)
+        const paymentInfoTemplates = [
+            { type: "fixed_info", description: "Seguro-Desemprego", status: 'Solicitar código do requerimento no e-mail <a href="mailto:desligamentos.br@sonda.com" class="contact-link">desligamentos.br@sonda.com</a>' },
+            {
+                type: "fixed_info",
+                description: "FGTS",
+                status: 'Valor liberado em até 5 dias úteis a data de demissão, acompanhar no aplicativo FGTS. Baixe o aplicativo: <a href="https://apps.apple.com/br/app/fgts/id1039575800" target="_blank" class="contact-link">App Store</a> / <a href="https://play.google.com/store/apps/details?id=br.gov.caixa.fgts.trabalhador&hl=pt_BR" target="_blank" class="contact-link">Play Store</a>'
+            },
+            { type: "fixed_info", description: "Férias Proporcionais", status: "Incluído no pagamento da Rescisão" }
+        ];
+
+        // References to DOM elements
+        const sections = document.querySelectorAll('.section');
+        const navButtons = document.querySelectorAll('.nav-button');
+        const faqCategoriesContainer = document.getElementById('faq-categories');
+        const faqListContainer = document.getElementById('faq-list');
+        const questionsAnswersContainer = document.getElementById('questions-answers-container');
+        const currentCategoryTitle = document.getElementById('current-category-title');
+        const paymentStatusDiv = document.getElementById('payment-status-container');
+        const dismissalDateInput = document.getElementById('dismissal-date');
+        const rescisaoPaymentDateDisplay = document.getElementById('rescisao-payment-date');
+        const dateErrorDisplay = document.getElementById('date-error');
+
+        // Function to show the selected section
+        function showSection(id) {
+            sections.forEach(section => {
+                section.classList.add('hidden'); // Hide all sections
+            });
+            document.getElementById(`${id}-section`).classList.remove('hidden'); // Show the desired section
+
+            // Update navigation button states
+            navButtons.forEach(button => {
+                button.classList.remove('active', 'bg-sonda-blue', 'text-white');
+                button.classList.add('bg-gray-200', 'text-gray-800');
+            });
+            const activeButton = document.getElementById(`nav-${id}`);
+            activeButton.classList.add('active', 'bg-sonda-blue', 'text-white');
+            activeButton.classList.remove('bg-gray-200', 'text-gray-800');
+        }
+
+        // Function to render FAQ categories
+        function renderFaqCategories() {
+            faqCategoriesContainer.innerHTML = ''; // Clear existing categories
+            faqsData.forEach(faqCategory => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'faq-category-item p-4 bg-white rounded-lg shadow-md flex items-center justify-center text-center font-medium text-gray-700 border border-gray-200 hover:border-sonda-blue';
+                categoryDiv.textContent = faqCategory.category;
+                categoryDiv.onclick = () => showFaqList(faqCategory);
+                faqCategoriesContainer.appendChild(categoryDiv);
+            });
+        }
+
+        // Function to show the list of questions and answers for a category
+        function showFaqList(category) {
+            faqCategoriesContainer.classList.add('hidden'); // Hide categories
+            faqListContainer.classList.remove('hidden'); // Show FAQ list
+            currentCategoryTitle.textContent = category.category; // Set category title
+
+            questionsAnswersContainer.innerHTML = ''; // Clear existing questions
+
+            category.questions.forEach((item, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'faq-question p-4 bg-white rounded-lg shadow-sm mb-3 border border-gray-200 hover:border-sonda-blue';
+                questionDiv.innerHTML = `<h4 class="font-semibold text-gray-800">${item.question} <span class="float-right text-gray-500">+</span></h4>`;
+                
+                const answerDiv = document.createElement('div');
+                answerDiv.className = 'faq-answer text-gray-600 mt-2 px-4 py-2 bg-blue-50 rounded-lg hidden'; /* Changed from indigo-50 to blue-50 */
+                answerDiv.innerHTML = item.answer; // Use innerHTML for links
+
+                questionDiv.onclick = () => {
+                    // Hide other open answers in the same category (optional, for cleaner UX)
+                    document.querySelectorAll('.faq-answer').forEach(ans => {
+                        if (ans !== answerDiv) {
+                            ans.classList.remove('show');
+                            ans.classList.add('hidden');
+                            ans.previousElementSibling.querySelector('span').textContent = '+';
+                        }
+                    });
+
+                    // Toggle visibility of the current answer
+                    if (answerDiv.classList.contains('hidden')) {
+                        answerDiv.classList.remove('hidden');
+                        answerDiv.classList.add('show');
+                        questionDiv.querySelector('span').textContent = '-';
+                    } else {
+                        answerDiv.classList.remove('show');
+                        answerDiv.classList.add('hidden');
+                        questionDiv.querySelector('span').textContent = '+';
+                    }
+                };
+                
+                questionsAnswersContainer.appendChild(questionDiv);
+                questionsAnswersContainer.appendChild(answerDiv);
+            });
+        }
+
+        // Function to go back to category view
+        function showCategories() {
+            faqListContainer.classList.add('hidden'); // Hide FAQ list
+            faqCategoriesContainer.classList.remove('hidden'); // Show categories
+            // Hide all answers when returning to categories
+            document.querySelectorAll('.faq-answer').forEach(ans => {
+                ans.classList.remove('show');
+                ans.classList.add('hidden');
+            });
+            document.querySelectorAll('.faq-question span').forEach(span => {
+                span.textContent = '+';
+            });
+        }
+
+        // Function to calculate the termination payment date
+        function calculateRescisaoDate() {
+            dateErrorDisplay.classList.add('hidden'); // Hide previous error messages
+            rescisaoPaymentDateDisplay.classList.add('hidden'); // Hide previous result
+
+            const dismissalDateStr = dismissalDateInput.value;
+            if (!dismissalDateStr) {
+                dateErrorDisplay.textContent = 'Por favor, informe a data de demissão.';
+                dateErrorDisplay.classList.remove('hidden');
+                return;
+            }
+
+            const dismissalDate = new Date(dismissalDateStr + 'T00:00:00'); // Add T00:00:00 to avoid timezone issues
+            if (isNaN(dismissalDate.getTime())) {
+                dateErrorDisplay.textContent = 'Data de demissão inválida. Por favor, use o formato correto.';
+                dateErrorDisplay.classList.remove('hidden');
+                return;
+            }
+
+            // Add 10 days to the dismissal date
+            const paymentDate = new Date(dismissalDate);
+            paymentDate.setDate(dismissalDate.getDate() + 10);
+
+            // Format the date to DD/MM/YYYY
+            const formattedPaymentDate = paymentDate.toLocaleDateString('pt-BR');
+
+            rescisaoPaymentDateDisplay.textContent = `Será paga até o dia ${formattedPaymentDate}.`;
+            rescisaoPaymentDateDisplay.classList.remove('hidden');
+        }
+
+        // Function to render payment status
+        function renderPaymentStatus() {
+            paymentStatusDiv.innerHTML = ''; // Clear existing content
+            
+            // Add fixed payment information
+            paymentInfoTemplates.forEach(item => {
+                const statusItem = document.createElement('p');
+                statusItem.className = 'bg-white p-3 rounded-md shadow-sm border border-gray-200';
+                statusItem.innerHTML = `<strong class="text-gray-800">${item.description}:</strong> <span class="text-gray-700">${item.status}</span>`;
+                paymentStatusDiv.appendChild(statusItem);
+            });
+        }
+
+        // Initialize the application when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFaqCategories(); // Load FAQ categories
+            renderPaymentStatus(); // Load payment status
+            showSection('faqs'); // Set FAQs section as initial
+        });
+    </script>
+</body>
+</html>
