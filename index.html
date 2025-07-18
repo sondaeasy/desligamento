@@ -19,7 +19,7 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family="Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Fonte base para o corpo */
         body {
@@ -70,6 +70,31 @@
         }
         .contact-link:hover {
             color: #1a4da3; /* Tom mais escuro de Sonda Blue no hover */
+        }
+        /* Estilo para a imagem do QR Code */
+        .qr-code-image {
+            width: 150px; /* Tamanho fixo para o QR Code */
+            height: 150px;
+            /* object-fit: contain; - Removido pois pode causar espaçamento indesejado */
+            border-radius: 8px; /* Cantos levemente arredondados */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            flex-shrink: 0; /* Impede que a imagem encolha */
+        }
+
+        /* Estilos para centralizar e alinhar o botão e o QR Code */
+        .pesquisa-content {
+            display: flex;
+            flex-direction: column; /* Empilha em telas menores */
+            align-items: center;
+            gap: 1.5rem; /* Espaçamento entre os itens */
+            justify-content: center; /* Centraliza horizontalmente em coluna */
+        }
+
+        @media (min-width: 640px) { /* Para telas maiores que 'sm' (640px) */
+            .pesquisa-content {
+                flex-direction: row; /* Alinha lado a lado em telas maiores */
+                /* justify-content: center; - Já está na definição padrão acima */
+            }
         }
     </style>
 </head>
@@ -129,7 +154,7 @@
                     </p>
                     <p class="text-gray-700">
                         <strong class="block sm:inline">E-mail:</strong>
-                        <a href="mailto:desligamento.br@sonda.com" class="contact-link ml-1">desligamentos.br@sonda.com</a>
+                        <a href="mailto:desligamentos.br@sonda.com" class="contact-link ml-1">desligamentos.br@sonda.com</a>
                     </p>
                 </div>
 
@@ -191,9 +216,13 @@
                 <p class="text-gray-600 mb-4">
                     Sua opinião é muito importante para nós! Por favor, preencha nossa pesquisa de desligamento para nos ajudar a melhorar continuamente.
                 </p>
-                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=vNBJ8bUOmk-egiSnbqz43sGYYe5S1yJCqP3sh-JFSWxUM1dCM1ZMREhPNVg1MUJDME44QzVCMDM5Ri4u" target="_blank" class="inline-block bg-sonda-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-200 ease-in-out">
-                    Acessar Pesquisa
-                </a>
+                <div class="pesquisa-content">
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=vNBJ8bUOmk-egiSnbqz43sGYYe5S1yJCqP3sh-JFSWxUM1dCM1ZMREhPNVg1MUJDME44QzVCMDM5Ri4u" target="_blank" class="inline-block bg-sonda-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-200 ease-in-out">
+                        Acessar Pesquisa
+                    </a>
+                    <!-- QR Code adicionado aqui -->
+                    <img src="imagem.jpg" alt="" class="qr-code-image">
+                </div>
                 <p class="text-sm text-gray-500 mt-2">
                     (O link abrirá em uma nova aba.)
                 </p>
