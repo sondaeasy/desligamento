@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Pós-Desligamento SONDA</title>
+    <!-- Favicon para consistência da marca -->
+    <link rel="icon" type="image/png" href="SONDA-favicon.png">
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,9 +22,10 @@
             }
         }
     </script>
+    <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Fonte base para o corpo */
+        /* Fonte base para o corpo, garantindo a aplicação da fonte Inter */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6; /* Cor de fundo suave */
@@ -34,6 +38,7 @@
             border-radius: 12px; /* Cantos arredondados */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
             padding: 1.5rem;
+            border: 2px solid #205DF5; /* Borda forte com a cor da marca SONDA */
         }
         /* Efeito de transição do botão de navegação */
         .nav-button {
@@ -41,7 +46,7 @@
         }
         /* Estilo do botão de navegação ativo */
         .nav-button.active {
-            background-color: #205DF5; /* Cor do botão ativo alterada para Sonda Blue */
+            background-color: '#205DF5'; /* Cor do botão ativo alterada para Sonda Blue */
             color: white;
         }
         /* Efeito hover do item FAQ e do item de categoria */
@@ -75,7 +80,6 @@
         .qr-code-image {
             width: 150px; /* Tamanho fixo para o QR Code */
             height: 150px;
-            /* object-fit: contain; - Removido pois pode causar espaçamento indesejado */
             border-radius: 8px; /* Cantos levemente arredondados */
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
             flex-shrink: 0; /* Impede que a imagem encolha */
@@ -93,21 +97,22 @@
         @media (min-width: 640px) { /* Para telas maiores que 'sm' (640px) */
             .pesquisa-content {
                 flex-direction: row; /* Alinha lado a lado em telas maiores */
-                /* justify-content: center; - Já está na definição padrão acima */
             }
         }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center py-8">
     <div class="container-app w-full p-6 sm:p-8 md:p-10">
-        <div class="flex justify-center mb-6">
+        <!-- Cabeçalho com logo à esquerda e título centralizado na página -->
+        <header class="flex items-center justify-center mb-8 w-full relative">
+            <!-- Logo posicionado absolutamente à esquerda -->
             <img src="SONDA-logo.png"
-                 alt="SONDA-logo" class="h-12 w-auto object-contain">
-        </div>
-
-        <h1 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">
-            Portal Pós-Desligamento
-        </h1>
+                 alt="Logo SONDA" class="h-16 w-auto object-contain absolute left-0 top-1/2 -translate-y-1/2 ml-6 sm:ml-8">
+            <!-- Título do portal, centralizado no espaço restante -->
+            <h1 class="text-3xl sm:text-4xl font-bold text-sonda-blue text-center flex-grow">
+                Portal Pós-Desligamento
+            </h1>
+        </header>
 
         <nav class="flex justify-center mb-8 space-x-2 sm:space-x-4">
             <button id="nav-faqs" class="nav-button px-4 py-2 sm:px-6 sm:py-3 bg-sonda-blue text-white rounded-lg font-semibold shadow-md active" onclick="showSection('faqs')">
@@ -127,7 +132,8 @@
         <div id="faqs-section" class="section active">
             <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">Perguntas Frequentes</h2>
             
-            <div id="faq-categories" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8 justify-center">
+            <!-- Contêiner flexbox para categorias de FAQ com centralização e quebra de linha -->
+            <div id="faq-categories" class="flex flex-wrap justify-center gap-4 mb-8">
                 </div>
 
             <div id="faq-list" class="hidden">
@@ -150,7 +156,8 @@
                     </p>
                     <p class="text-gray-700">
                         <strong class="block sm:inline">Telefone (Apenas WhatsApp):</strong>
-                        <a href="tel:+5511990210493" class="contact-link ml-1">(11) 99021-0493</a>
+                        <!-- Link direto para WhatsApp -->
+                        <a href="https://wa.me/5511990210493" target="_blank" class="contact-link ml-1">(11) 99021-0493</a>
                     </p>
                     <p class="text-gray-700">
                         <strong class="block sm:inline">E-mail:</strong>
@@ -221,7 +228,7 @@
                         Acessar Pesquisa
                     </a>
                     <!-- QR Code adicionado aqui -->
-                    <img src="imagem.jpg" alt="" class="qr-code-image">
+                    <img src="QRcode.png" alt="" class="qr-code-image">
                 </div>
                 <p class="text-sm text-gray-500 mt-2">
                     (O link abrirá em uma nova aba.)
@@ -259,7 +266,7 @@
             {
                 category: "Plano de Saúde",
                 questions: [
-                    { question: "Posso manter meu plano de saúde após o desligamento?", answer: "Sim, em alguns casos é possível. Se o desligamento for sem justa causa, você pode ter direito à manutenção do plano de saúde nas mesmas condições de cobertura, desde que assuma integralmente o pagamento do benefício. Consulte a área de benefícios para mais detalhes e prazos." },
+                    { question: "Posso manter meu plano de saúde após o desligamento?", answer: "Sim, em alguns casos é possível. Se o desligamento for sem justa causa, você pode ter direito à manutenção do plano de saúde nas mesmas condições de cobertura, desde que assumo integralmente o pagamento do benefício. Consulte a área de benefícios para mais detalhes e prazos." },
                     { question: "Até quando meu plano de saúde empresarial estará ativo?", answer: "O plano de saúde empresarial geralmente é mantido por um período de 30 dias após o desligamento. Após esse período, as opções de portabilidade ou manutenção devem ser negociadas diretamente com a operadora do plano, caso você opte por seguir com o benefício." }
                 ]
             },
@@ -316,7 +323,8 @@
             faqCategoriesContainer.innerHTML = ''; // Limpar categorias existentes
             faqsData.forEach(faqCategory => {
                 const categoryDiv = document.createElement('div');
-                categoryDiv.className = 'faq-category-item p-4 bg-white rounded-lg shadow-md flex items-center justify-center text-center font-medium text-gray-700 border border-gray-200 hover:border-sonda-blue';
+                // Adicionando classes para controlar a largura do item e garantir que ele se ajuste e centralize
+                categoryDiv.className = 'faq-category-item p-4 bg-white rounded-lg shadow-md flex items-center justify-center text-center font-medium text-gray-700 border border-gray-200 hover:border-sonda-blue w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.666rem)]';
                 categoryDiv.textContent = faqCategory.category;
                 categoryDiv.onclick = () => showFaqList(faqCategory);
                 faqCategoriesContainer.appendChild(categoryDiv);
