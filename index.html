@@ -176,7 +176,7 @@
                     </p>
                     <p class="text-gray-700">
                         <strong class="block sm:inline">E-mail:</strong>
-                        <a href="mailto:eliana.lecaviez" class="contact-link ml-1">eliana.lecaviez@sonda.com</a>
+                        <a href="mailto:eliana.lecaviez@sonda.com" class="contact-link ml-1">eliana.lecaviez@sonda.com</a>
                         <a href="mailto:almir.oliveira@sonda.com" class="contact-link ml-1">almir.oliveira@sonda.com</a>
                     </p>
                 </div>
@@ -187,7 +187,7 @@
             <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">Status de Pagamentos</h2>
             <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
                 <p class="text-gray-600 mb-4">
-                    Aqui você pode acompanhar o status dos seus pagamentos pós-desligamento.
+                    Aqui você pode acompanhar o o prazo dos seus pagamentos pós-desligamento.
                 </p>
                 <div class="mb-6">
                     <label for="dismissal-date" class="block text-gray-700 text-sm font-bold mb-2">
@@ -251,49 +251,51 @@
                 category: "Rescisão",
                 questions: [
                     { question: "Qual o prazo para o pagamento da rescisão?", answer: "O pagamento da rescisão deve ser efetuado em até 10 dias corridos após o término do contrato." },
-                    { question: "Onde posso obter meu Termo de Rescisão de Contrato de Trabalho (TRCT)?", answer: "O Termo de Rescisão é disponibilizado após o pagamento e enviado por e-mail. Verifique sua caixa de entrada e spam." },
+                    { question: "Onde posso obter meu Termo de Rescisão de Contrato de Trabalho (TRCT)?", answer: "O Termo de Rescisão é disponibilizado após o pagamento e enviado por e-mail. Verifique sua caixa de entrada e spam. Exceto os casos que se faz necessário realizar a homologação presencial no sindicato." },
                     { question: "Como funciona a homologação do desligamento?", answer: "A homologação ocorre para garantir que todos os direitos trabalhistas foram devidamente pagos e é realizada de forma online após o pagamento da Rescisão." },
-                    { question: "Como é feita a baixa na Carteira de Trabalho?", answer: "A baixa na carteira de trabalho será transmitida pelo e-Social. Após a data de demissão, o colaborador desligado poderá visualizar as anotações pelo aplicativo Carteira de Trabalho Digital, não sendo necessária a anotação na carteira de trabalho física."}
+                    { question: "Como é feita a baixa na Carteira de Trabalho?", answer: "A baixa na carteira de trabalho será transmitida pelo e-Social. Após a data de demissão, o colaborador desligado poderá visualizar as anotações pelo aplicativo Carteira de Trabalho Digital, não sendo necessária a anotação na carteira de trabalho física."},
+                    { question: "Empréstimo Consignado", answer: "Se você tem empréstimo consignado, até 30% do líquido da sua rescisão será descontado e repassado à prestadora após o dia 10 do mês seguinte à demissão; caso reste algum valor a pagar, você deverá ligar para a prestadora e negociar o saldo residual."}
                 ]
             },
             {
                 category: "FGTS",
                 questions: [
                     { question: "Como sacar o FGTS após o desligamento?", answer: "Para sacar o FGTS, não é necessário ir até uma agência da Caixa. Basta cadastrar uma conta bancária no aplicativo do FGTS e o valor será depositado diretamente." },
-                    { question: "Qual o prazo para a liberação da chave do FGTS?", answer: "Não é necessário comparecer a uma agência da Caixa para sacar o FGTS. Após a comunicação da rescisão no FGTS Digital, a liberação do valor ocorre em até 5 dias úteis. Para receber, basta cadastrar uma conta bancária no aplicativo do FGTS — o valor será depositado automaticamente, sem necessidade de chave ou comparecimento presencial." }
+                    { question: "Qual o prazo para a liberação do FGTS?", answer: "A liberação do FGTS ocorre em até 5 dias úteis após a comunicação da rescisão via FGTS Digital, sendo o valor depositado automaticamente na conta bancária cadastrada no aplicativo FGTS, eliminando a necessidade de comparecer a uma agência da Caixa ou usar chave." },
+                    { question: "Quem tem direito ao saque do FGTS?", answer: "Você pode sacar o FGTS em várias situações: demissão sem justa causa, término de contrato por prazo determinado, aposentadoria, falecimento do trabalhador, doença grave (do trabalhador ou dependente), conta inativa por 3 anos após desligamento, para amortizar ou quitar financiamento imobiliário, ou em casos de desastre natural que afete sua residência, com reconhecimento do Governo Federal." }
                 ]
             },
             {
                 category: "Seguro-Desemprego",
                 questions: [
-                    { question: "Como solicitar o seguro-desemprego?", answer: 'Para solicitar o seguro-desemprego, é necessário o código de requerimento. Solicite esse código pelo e-mail: <a href="mailto:desligamentos.br@sonda.com" class="contact-link">desligamentos.br@sonda.com</a>. Após receber o código, você pode dar entrada no benefício pelos seguintes canais: Aplicativo Carteira de Trabalho Digital, Portal Gov.br, Presencialmente nas Superintendências Regionais do Trabalho (SRT)' },
+                    { question: "Como solicitar o seguro-desemprego?", answer: "Para solicitar o seguro-desemprego, você receberá o número de requerimento e demais documentos rescisórios por e-mail, permitindo que você preencha o formulário pelo aplicativo Carteira de Trabalho Digital ou agende um atendimento presencial na Superintendência Regional do Trabalho (SRT) da sua cidade." },
                     { question: "Quais documentos são necessários para o seguro-desemprego?", answer: "Geralmente são necessários: Requerimento do Seguro-Desemprego (fornecido pela empresa), Carteira de Trabalho e Previdência Social, documento de identidade, CPF, comprovante de inscrição no PIS/PASEP e comprovante dos 3 últimos salários." }
                 ]
             },
             {
                 category: "Plano de Saúde",
                 questions: [
-                    { question: "Posso manter meu plano de saúde após o desligamento?", answer: "Sim, em alguns casos é possível. Se o desligamento for sem justa causa, você pode ter direito à manutenção do plano de saúde nas mesmas condições de cobertura, desde que assumo integralmente o pagamento do benefício. Consulte a área de benefícios para mais detalhes e prazos." },
-                    { question: "Até quando meu plano de saúde empresarial estará ativo?", answer: "O plano de saúde empresarial geralmente é mantido por um período de 30 dias após o desligamento. Após esse período, as opções de portabilidade ou manutenção devem ser negociadas diretamente com a operadora do plano, caso você opte por seguir com o benefício." }
+                    { question: "Posso manter meu plano de saúde após o desligamento?", answer: "Você pode manter seu plano de saúde após o desligamento apenas se era um beneficiário contributário (participava pagando parte da mensalidade como titular); se esse for seu caso e tiver interesse, envie um e-mail para <a href=\"mailto:almir.oliveira@sonda.com\" class=\"contact-link\">almir.oliveira@sonda.com</a> ou <a href=\"mailto:jaqueline.santos@sonda.com\" class=\"contact-link\">jaqueline.santos@sonda.com</a> para solicitar o formulário de plano de extensão." },
+                    { question: "Até quando meu plano de saúde empresarial estará ativo?", answer: "Seu plano de saúde empresarial permanece ativo por um período que varia conforme o tipo de desligamento: para dispensa por iniciativa da empresa, você pode utilizá-lo até o último dia da projeção dos dias de aviso prévio; já em caso de pedido de demissão, o plano fica ativo até o último dia do mês da sua demissão." }
                 ]
             },
             {
                 category: "Agendamento de Exame Demissional",
                 questions: [
-                    { question: "Como solicitar o agendamento do exame demissional?", answer: 'Para solicitar o agendamento do exame demissional, envie um e-mail para <a href="mailto:desligamentos.br@sonda.com" class="contact-link">desligamentos.br@sonda.com</a>.' }
+                    { question: "Como solicitar o agendamento do exame demissional?", answer: "Após seu desligamento, a guia de encaminhamento médico para o exame demissional será enviada para o seu e-mail pessoal; com ela em mãos, basta comparecer ao local indicado para realizar o exame, e caso não receba o agendamento ou a guia, por favor, solicite-os enviando um e-mail para <a href=\"mailto:desligamentos.br@sonda.com\" class=\"contact-link\">desligamentos.br@sonda.com</a>." }
+                ]
+            },
+            {
+                category: "Devolução de Equipamentos e Crachá",
+                questions: [
+                    { question: "Como devo devolver equipamentos e crachá?", answer: "Se você reside em São Paulo, a entrega deve ser feita na unidade em Tamboré. Colaboradores que residem no Rio de Janeiro ou em Brasília devem comparecer à unidade Sonda de uma dessas cidades e entregar os itens para a equipe de Field Services." }
                 ]
             }
         ];
 
         // Dados para Status de Pagamento (agora com modelos fixos e dinâmicos)
         const paymentInfoTemplates = [
-            { type: "fixed_info", description: "Seguro-Desemprego", status: 'Solicitar código do requerimento no e-mail <a href="mailto:desligamentos.br@sonda.com" class="contact-link">desligamentos.br@sonda.com</a>' },
-            {
-                type: "fixed_info",
-                description: "FGTS",
-                status: 'Valor liberado em até 5 dias úteis a data de demissão, acompanhar no aplicativo FGTS. Baixe o aplicativo: <a href="https://apps.apple.com/br/app/fgts/id1039575800" target="_blank" class="contact-link">App Store</a> / <a href="https://play.google.com/store/apps/details?id=br.gov.caixa.fgts.trabalhador&hl=pt_BR" target="_blank" class="contact-link">Play Store</a>'
-            },
-            { type: "fixed_info", description: "Férias Proporcionais", status: "Incluído no pagamento da Rescisão" }
+            { type: "fixed_info", description: "Importante", status: 'O pagamento da sua rescisão será feito em até 10 dias corridos a partir da data da demissão. O valor estará disponível em sua conta até o final do expediente bancário (17h00) do dia do pagamento.' }
         ];
 
         // Referências aos elementos do DOM
