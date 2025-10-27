@@ -1,437 +1,434 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Pós-Desligamento SONDA</title>
-    <link rel="icon" type="image/png" href="SONDA-logo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        roboto: ['Roboto', 'sans-serif'],
-                    },
-                    colors: {
-                        'sonda-blue': '#205DF5', /* Cor azul personalizada para a marca SONDA */
-                    }
-                }
-            }
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* Fonte base para o corpo, garantindo a aplicação da fonte Inter */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f3f4f6; /* Cor de fundo suave */
-        }
-        /* Estilos adicionais para centralização e um visual limpo */
-        .container-app {
-            max-width: 960px; /* Largura máxima para o conteúdo principal */
-            margin: 2rem auto;
-            background-color: #ffffff;
-            border-radius: 12px; /* Cantos arredondados */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
-            padding: 1.5rem;
-            border: 2px solid #205DF5; /* Borda forte com a cor da marca SONDA */
-        }
-        /* Efeito de transição do botão de navegação */
-        .nav-button {
-            transition: all 0.2s ease-in-out;
-        }
-        /* Estilo do botão de navegação ativo */
-        .nav-button.active {
-            background-color: '#205DF5'; /* Cor do botão ativo alterada para Sonda Blue */
-            color: white;
-        }
-        /* Efeito hover do item FAQ e do item de categoria */
-        .faq-question, .faq-category-item {
-            cursor: pointer;
-            transition: background-color 0.2s ease-in-out;
-        }
-        .faq-question:hover, .faq-category-item:hover {
-            background-color: #f3f4f6;
-        }
-        /* Transição de recolhimento/expansão da resposta FAQ */
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        .faq-answer.show {
-            max-height: 200px; /* Ajustar conforme o tamanho máximo esperado da resposta */
-            transition: max-height 0.5s ease-in;
-        }
-        /* Estilo para links de contato */
-        .contact-link {
-            color: #205DF5; /* Cor do link alterada para Sonda Blue */
-            text-decoration: none;
-            transition: color 0.2s ease-in-out;
-        }
-        .contact-link:hover {
-            color: #1a4da3; /* Tom mais escuro de Sonda Blue no hover */
-        }
-        /* Estilo para a imagem do QR Code */
-        .qr-code-image {
-            width: 150px; /* Tamanho fixo para o QR Code */
-            height: 150px;
-            border-radius: 8px; /* Cantos levemente arredondados */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-            flex-shrink: 0; /* Impede que a imagem encolha */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reco Soluções - Instalação e Manutenção</title>
+  
+  <!-- Ícone da guia do navegador -->
+  <link rel="icon" href="C:\Users\gustavo.torres\Documents\Nova pasta\Pasta_modelo_relatorio_despesa\logo.png" type="image/png">
 
-        /* Estilos para centralizar e alinhar o botão e o QR Code */
-        .pesquisa-content {
-            display: flex;
-            flex-direction: column; /* Empilha em telas menores */
-            align-items: center;
-            gap: 1.5rem; /* Espaçamento entre os itens */
-            justify-content: center; /* Centraliza horizontalmente em coluna */
-        }
+  <!-- Carrega a fonte Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Carrega os ícones do Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Carrega o Tailwind CSS para o design responsivo -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        @media (min-width: 640px) { /* Para telas maiores que 'sm' (640px) */
-            .pesquisa-content {
-                flex-direction: row; /* Alinha lado a lado em telas maiores */
-            }
+  <!-- Define as cores e fonte personalizadas do Tailwind -->
+  <style>
+    :root {
+      /* Novas cores fornecidas pelo cliente */
+      --reco-blue: #0098FF;
+      --reco-blue-dark: #0060A8;
+      --reco-orange: #FF7A00;
+      --reco-orange-dark: #B35200;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Animação para os pontos do carrossel */
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .animate-pulse-dot {
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Estilo para aplicar o desfoque às imagens do carrossel */
+    .carousel-image {
+      filter: blur(2px); /* Aumente o valor para um desfoque maior, se necessário */
+      transform: scale(1.02); /* Amplia ligeiramente para evitar bordas brancas com o desfoque */
+    }
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'reco-blue': 'var(--reco-blue)',
+            'reco-blue-dark': 'var(--reco-blue-dark)',
+            'reco-orange': 'var(--reco-orange)',
+            'reco-orange-dark': 'var(--reco-orange-dark)',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          }
         }
-    </style>
+      }
+    }
+  </script>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center py-8">
-    <div class="container-app w-full p-6 sm:p-8 md:p-10">
-        <header class="flex items-center justify-center mb-8 w-full relative">
-            <img src="SONDA-logo.png"
-                 alt="Logo SONDA" class="h-16 w-auto object-contain absolute left-0 top-1/2 -translate-y-1/2 ml-6 sm:ml-8">
-            <h1 class="text-3xl sm:text-4xl font-bold text-sonda-blue text-center flex-grow">
-                Portal Pós-Desligamento
-            </h1>
-        </header>
+<body class="bg-gray-50 text-gray-900">
 
-        <nav class="flex justify-center mb-8 space-x-2 sm:space-x-4">
-            <button id="nav-faqs" class="nav-button px-4 py-2 sm:px-6 sm:py-3 bg-sonda-blue text-white rounded-lg font-semibold shadow-md active" onclick="showSection('faqs')">
-                FAQs
-            </button>
-            <button id="nav-contatos" class="nav-button px-4 py-2 sm:px-6 sm:py-3 bg-gray-200 text-gray-800 rounded-lg font-semibold shadow-md" onclick="showSection('contatos')">
-                Contatos
-            </button>
-            <button id="nav-pagamentos" class="nav-button px-4 py-2 sm:px-6 sm:py-3 bg-gray-200 text-gray-800 rounded-lg font-semibold shadow-md" onclick="showSection('pagamentos')">
-                Pagamentos
-            </button>
-            <button id="nav-pesquisa" class="nav-button px-4 py-2 sm:px-6 sm:py-3 bg-gray-200 text-gray-800 rounded-lg font-semibold shadow-md" onclick="showSection('pesquisa')">
-                Pesquisa de Desligamento
-            </button>
-        </nav>
-
-        <div id="faqs-section" class="section active">
-            <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">Perguntas Frequentes</h2>
-            
-            <div id="faq-categories" class="flex flex-wrap justify-center gap-4 mb-8">
-                </div>
-
-            <div id="faq-list" class="hidden">
-                <button class="mb-4 text-sonda-blue hover:text-blue-700 font-medium" onclick="showCategories()">
-                    &larr; Voltar para Categorias
-                </button>
-                <h3 id="current-category-title" class="text-xl font-semibold text-gray-700 mb-4"></h3>
-                <div id="questions-answers-container">
-                    </div>
-            </div>
-        </div>
-
-        <div id="contatos-section" class="section hidden">
-            <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">Canais de Contato</h2>
-            <div class="space-y-6">
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Equipe Desligamento</h3>
-                    <p class="text-gray-600 mb-2">
-                        Para dúvidas sobre documentação, processo de desligamento, FGTS ou agendamento de exame demissional.
-                    </p>
-                    <p class="text-gray-700">
-                        <strong class="block sm:inline">Telefone (Apenas WhatsApp):</strong>
-                        <a href="https://wa.me/5511990210493" target="_blank" class="contact-link ml-1">(11) 99021-0493</a>
-                    </p>
-                    <p class="text-gray-700">
-                        <strong class="block sm:inline">E-mail:</strong>
-                        <a href="mailto:desligamentos.br@sonda.com" class="contact-link ml-1">desligamentos.br@sonda.com</a>
-                    </p>
-                </div>
-
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Equipe Benefícios</h3>
-                    <p class="text-gray-600 mb-2">
-                        Avaliar a viabilidade de manutenção do convênio médico.
-                    </p>
-                    <p class="text-gray-700">
-                        <strong class="block sm:inline">Telefone (Apenas WhatsApp):</strong>
-                        <a href="https://wa.me/5511981112256" target="_blank" class="contact-link ml-1">(11) 98111-2256</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div id="pagamentos-section" class="section hidden">
-            <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">Status de Pagamentos</h2>
-            <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                <p class="text-gray-600 mb-4">
-                    Aqui você pode acompanhar o prazo dos seus pagamentos pós-desligamento.
-                </p>
-                <div class="mb-6">
-                    <label for="dismissal-date" class="block text-gray-700 text-sm font-bold mb-2">
-                        Informe sua Data de Demissão:
-                    </label>
-                    <div class="flex flex-col sm:flex-row gap-4 items-center">
-                        <input
-                            type="date"
-                            id="dismissal-date"
-                            class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-sonda-blue"
-                        />
-                        <button
-                            onclick="calculateRescisaoDate()"
-                            class="bg-sonda-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-200 ease-in-out w-full sm:w-auto"
-                        >
-                            Calcular Prazo Rescisão
-                        </button>
-                    </div>
-                    <p id="rescisao-payment-date" class="mt-4 text-green-700 font-semibold hidden">
-                        </p>
-                    <p id="date-error" class="mt-2 text-red-500 text-sm hidden">
-                        </p>
-                </div>
-
-                <div id="payment-status-container" class="space-y-3">
-                    </div>
-            </div>
-        </div>
-
-        <div id="pesquisa-section" class="section hidden">
-            <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">Pesquisa de Desligamento ✨</h2>
-            <div class="bg-gray-50 p-6 rounded-lg shadow-lg text-center transform hover:scale-102 transition-transform duration-300 ease-in-out">
-                <p class="text-gray-600 mb-4 font-semibold">
-                    Sua voz é fundamental para construirmos um futuro melhor! Contribua com sua experiência preenchendo nossa pesquisa de desligamento.
-                </p>
-                <p class="text-gray-700 mb-6">
-                    Acesse o link abaixo ou escaneie o QR Code para participar:
-                </p>
-                <div class="pesquisa-content">
-                    <div class="flex flex-col items-center">
-                        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=vNBJ8bUOmk-egiSnbqz43sGYYe5S1yJCqP3sh-JFSWxUM1dCM1ZMREhPNVg1MUJDME44QzVCMDM5Ri4u" target="_blank" class="inline-block bg-sonda-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-200 ease-in-out">
-                            Acessar Pesquisa
-                        </a>
-                        <p class="text-sm text-gray-500 mt-2">
-                            (O link abrirá em uma nova aba.)
-                        </p>
-                    </div>
-                    <div class="border-l border-gray-300 h-24 mx-8 hidden sm:block"></div>
-                    <img src="QRcode.png" alt="QR Code para Pesquisa de Desligamento" class="qr-code-image">
-                </div>
-            </div>
-        </div>
+<!-- Cabeçalho -->
+<header class="bg-white text-gray-900 shadow-md sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+      <!-- Logo da empresa -->
+      <img src="C:\Users\gustavo.torres\Documents\Nova pasta\Pasta_modelo_relatorio_despesa\logo.png" alt="Reco Soluções" class="h-16" />
     </div>
+    <nav class="hidden md:flex space-x-6 text-lg">
+      <a href="#home" class="text-reco-blue hover:text-reco-orange transition-colors duration-200">Início</a>
+      <a href="#sobre" class="text-reco-blue hover:text-reco-orange transition-colors duration-200">Sobre</a>
+      <a href="#servicos" class="text-reco-blue hover:text-reco-orange transition-colors duration-200">Serviços</a>
+      <a href="#portfolio" class="text-reco-blue hover:text-reco-orange transition-colors duration-200">Portfólio</a>
+      <a href="#contato" class="text-reco-blue hover:text-reco-orange transition-colors duration-200">Contato</a>
+    </nav>
+    <button id="menu-toggle" class="md:hidden text-reco-blue">
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+  </div>
+  <!-- Menu Mobile -->
+  <nav id="mobile-menu" class="hidden md:hidden bg-reco-blue text-white px-4 py-2 space-y-2 absolute w-full transition-all duration-200 ease-in-out">
+    <a href="#home" class="block w-full p-2 text-left hover:bg-reco-orange rounded">Início</a>
+    <a href="#sobre" class="block w-full p-2 text-left hover:bg-reco-orange rounded">Sobre</a>
+    <a href="#servicos" class="block w-full p-2 text-left hover:bg-reco-orange rounded">Serviços</a>
+    <a href="#portfolio" class="block w-full p-2 text-left hover:bg-reco-orange rounded">Portfólio</a>
+    <a href="#contato" class="block w-full p-2 text-left hover:bg-reco-orange rounded">Contato</a>
+  </nav>
+</header>
+  
+<!-- Seção Principal (Hero) com Carrossel -->
+<section id="home" class="relative w-full overflow-hidden text-white flex items-center justify-center min-h-[60vh]">
+  
+  <!-- Carrossel de fundo -->
+  <div class="absolute inset-0 w-full h-full">
+    <div id="carousel-images" class="flex transition-transform duration-500 ease-in-out w-full h-full">
+      <!-- As imagens serão inseridas pelo JavaScript -->
+    </div>
+  </div>
 
-    <script>
-        // Dados de exemplo para FAQs
-        const faqsData = [
-            {
-                category: "Rescisão",
-                questions: [
-                    { question: "Qual o prazo para o pagamento da rescisão?", answer: "O pagamento da rescisão deve ser efetuado em até 10 dias corridos após o término do contrato." },
-                    { question: "Onde posso obter meu Termo de Rescisão de Contrato de Trabalho (TRCT)?", answer: "O Termo de Rescisão é disponibilizado após o pagamento e enviado por e-mail. Verifique sua caixa de entrada e spam. Exceto os casos que se faz necessário realizar a homologação presencial no sindicato." },
-                    { question: "Como funciona a homologação do desligamento?", answer: "A homologação ocorre para garantir que todos os direitos trabalhistas foram devidamente pagos e é realizada de forma online após o pagamento da Rescisão. Se houver necessidade de agendamento no sindicato, informaremos a data e o horário." },
-                    { question: "Como é feita a baixa na Carteira de Trabalho?", answer: "A baixa na carteira de trabalho será transmitida pelo e-Social. Após a data de demissão, o colaborador desligado poderá visualizar as anotações pela Carteira de Trabalho Digital, disponível na <a href='https://apps.apple.com/br/app/carteira-de-trabalho-digital/id1396328909' target='_blank' class='contact-link'>App Store</a> / <a href='https://play.google.com/store/apps/details?id=br.gov.dataprev.carteiradigital' target='_blank' class='contact-link'>Play Store</a>, não sendo necessária a anotação na carteira de trabalho física."},
-                    { question: "Empréstimo Consignado", answer: "Se você tem empréstimo consignado, até 30% do líquido da sua rescisão será descontado e repassado à prestadora após o dia 10 do mês seguinte à demissão; caso reste algum valor a pagar, você deverá entrar em contato com a prestadora e negociar o saldo residual."}
-                ]
-            },
-            {
-                category: "FGTS",
-                questions: [
-                    { question: "Como sacar o FGTS após o desligamento?", answer: "Para sacar o FGTS, disponível na <a href='https://apps.apple.com/br/app/fgts/id1485908422' target='_blank' class='contact-link'>App Store</a> / <a href='https://play.google.com/store/apps/details?id=br.gov.caixa.fgts.trabalhador' target='_blank' class='contact-link'>Play Store</a>, não é necessário ir até uma agência da Caixa. Basta cadastrar uma conta bancária no aplicativo do FGTS e o valor será depositado diretamente." },
-                    { question: "Qual o prazo para a liberação do FGTS?", answer: "A liberação do FGTS, disponível na <a href='https://apps.apple.com/br/app/fgts/id1485908422' target='_blank' class='contact-link'>App Store</a> / <a href='https://play.google.com/store/apps/details?id=br.gov.caixa.fgts.trabalhador' target='_blank' class='contact-link'>Play Store</a>, ocorre em até 5 dias úteis após a comunicação da rescisão via FGTS Digital, sendo o valor depositado automaticamente na conta bancária cadastrada no aplicativo FGTS, eliminando a necessidade de comparecer a uma agência da Caixa ou usar chave." },
-                    { question: "Quem tem direito ao saque do FGTS?", answer: "Você pode sacar o FGTS, disponível na <a href='https://apps.apple.com/br/app/fgts/id1485908422' target='_blank' class='contact-link'>App Store</a> / <a href='https://play.google.com/store/apps/details?id=br.gov.caixa.fgts.trabalhador' target='_blank' class='contact-link'>Play Store</a>, em várias situações: demissão sem justa causa, término de contrato por prazo determinado, aposentadoria, falecimento do trabalhador, doença grave (do trabalhador ou dependente), conta inativa por 3 anos após desligamento, para amortizar ou quitar financiamento imobiliário, ou em casos de desastre natural que afete sua residência, com reconhecimento do Governo Federal." }
-                ]
-            },
-            {
-                category: "Seguro-Desemprego",
-                questions: [
-                    { question: "Como solicitar o seguro-desemprego?", answer: "Para solicitar o seguro-desemprego, você receberá o número de requerimento e demais documentos rescisórios por e-mail, permitindo que você preencha o formulário pela Carteira de Trabalho Digital, disponível na <a href='https://apps.apple.com/br/app/carteira-de-trabalho-digital/id1396328909' target='_blank' class='contact-link'>App Store</a> / <a href='https://play.google.com/store/apps/details?id=br.gov.dataprev.carteiradigital' target='_blank' class='contact-link'>Play Store</a>, ou agende um atendimento presencial na Superintendência Regional do Trabalho (SRT) da sua cidade." },
-                    { question: "Quais documentos são necessários para o seguro-desemprego?", answer: "Geralmente são necessários: Requerimento do Seguro-Desemprego (fornecido pela empresa), Carteira de Trabalho e Previdência Social, documento de identidade, CPF, comprovante de inscrição no PIS/PASEP e comprovante dos 3 últimos salários." }
-                ]
-            },
-            {
-                category: "Plano de Saúde",
-                questions: [
-                    { question: "Posso manter meu plano de saúde após o desligamento?", answer: "Você pode manter seu plano de saúde após o desligamento apenas em caso de dispensa por iniciativa da empresa e se era um beneficiário contributário (participava pagando parte da mensalidade como titular); se esse for seu caso e tiver interesse, envie um e-mail para <a href=\"mailto:almir.oliveira@sonda.com\" class=\"contact-link\">almir.oliveira@sonda.com</a> ou <a href=\"mailto:jaqueline.santos@sonda.com\" class=\"contact-link\">jaqueline.santos@sonda.com</a> para solicitar o formulário de plano de extensão." },
-                    { question: "Até quando meu plano de saúde empresarial estará ativo?", answer: "Seu plano de saúde empresarial permanece ativo por um período que varia conforme o tipo de desligamento: para dispensa por iniciativa da empresa, você pode utilizá-lo até o último dia da projeção dos dias de aviso prévio; já em caso de pedido de demissão, o plano fica ativo até o último dia do mês da sua demissão." }
-                ]
-            },
-            {
-                category: "Agendamento de Exame Demissional",
-                questions: [
-                    { question: "Como solicitar o agendamento do exame demissional?", answer: "Após seu desligamento, a guia de encaminhamento médico para o exame demissional será enviada para o seu e-mail pessoal; com ela em mãos, basta comparecer ao local indicado para realizar o exame, e caso não tenha recebido o agendamento ou a guia, por favor, solicite-os enviando um e-mail para <a href=\"mailto:desligamentos.br@sonda.com\" class=\"contact-link\">desligamentos.br@sonda.com</a>." }
-                ]
-            },
-            {
-                category: "Devolução de Equipamentos e Crachá",
-                questions: [
-                    { question: "Como devo devolver equipamentos e crachá?", answer: "É preciso alinhar com seu gestor a devolução dos equipamentos e crachá. Para colaboradores que residem em São Paulo (unidades Tamboré ou Berrini), Rio de Janeiro ou Brasília, o comparecimento em uma unidade da Sonda de uma das cidades citadas é necessário para entregar os itens à equipe de Field Services." }
-                ]
-            }
-        ];
+  <!-- Sobreposição de conteúdo para o texto e botão -->
+  <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center p-4 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold">Reco Soluções</h1>
+    <p class="mt-4 text-lg md:text-2xl font-light">Projetos, Instalação e Manutenção Hidráulica.</p>
+    <a href="#contato" class="mt-6 inline-block bg-reco-orange text-white font-bold px-6 py-3 rounded-full shadow-lg hover:bg-orange-500 transition-transform duration-200 hover:scale-105">
+      SOLICITE UM ORÇAMENTO
+    </a>
+  </div>
+  
+  <!-- Navegação por pontos -->
+  <div id="carousel-dots" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+  </div>
 
-        // Dados para Status de Pagamento (agora com modelos fixos e dinâmicos)
-        const paymentInfoTemplates = [
-            { type: "fixed_info", description: "Importante", status: 'O pagamento da sua rescisão será feito em até 10 dias corridos a partir da data da demissão. O valor estará disponível em sua conta até o final do expediente bancário (17h00) do dia do pagamento.' }
-        ];
+</section>
 
-        // Referências aos elementos do DOM
-        const sections = document.querySelectorAll('.section');
-        const navButtons = document.querySelectorAll('.nav-button');
-        const faqCategoriesContainer = document.getElementById('faq-categories');
-        const faqListContainer = document.getElementById('faq-list');
-        const questionsAnswersContainer = document.getElementById('questions-answers-container');
-        const currentCategoryTitle = document.getElementById('current-category-title');
-        const paymentStatusDiv = document.getElementById('payment-status-container');
-        const dismissalDateInput = document.getElementById('dismissal-date');
-        const rescisaoPaymentDateDisplay = document.getElementById('rescisao-payment-date');
-        const dateErrorDisplay = document.getElementById('date-error');
+<!-- Seção Sobre Nós -->
+<section id="sobre" class="max-w-7xl mx-auto px-4 py-16">
+  <div class="bg-white rounded-xl p-8 md:p-16 shadow-lg text-center">
+    <h2 class="text-4xl md:text-5xl text-reco-blue font-bold mb-12">Sobre Nós</h2>
+    <div class="flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-16">
+      <div class="flex-1">
+        <p class="text-lg text-gray-700 leading-relaxed mb-6 text-justify">
+            A Reco Soluções é uma empresa dedicada a oferecer serviços de excelência em engenharia e consultoria. Nossa missão é proporcionar tranquilidade e segurança aos nossos clientes por meio de soluções eficientes e sustentáveis. Com uma equipe experiente, atuamos desde a concepção de projetos até a execução e manutenção, garantindo um alto padrão técnico em todas as etapas.
+        </p>
+        <a href="#contato" class="bg-reco-blue text-white font-bold py-3 px-6 rounded-full transition-transform duration-200 hover:scale-105">Fale Conosco</a>
+      </div>
+      <div class="flex-1">
+        <img src="C:\Users\gustavo.torres\Documents\Nova pasta\Pasta_modelo_relatorio_despesa\logo-reco.png" alt="Equipe Reco Soluções" class="w-full h-auto rounded-xl shadow-lg" />
+      </div>
+    </div>
+    
+    <!-- Missão, Visão, Valores -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 text-center">
+      <div class="p-8 bg-gray-50 rounded-xl shadow-inner">
+        <i class="fas fa-handshake text-4xl text-reco-orange mb-4"></i>
+        <h3 class="text-2xl font-bold text-reco-blue mb-2">Missão</h3>
+        <p class="text-gray-600">Projetar, instalar e realizar a manutenção de sistemas hidráulicos, garantindo a segurança e o bom funcionamento das instalações.</p>
+      </div>
+      <div class="p-8 bg-gray-50 rounded-xl shadow-inner">
+        <i class="fas fa-eye text-4xl text-reco-orange mb-4"></i>
+        <h3 class="text-2xl font-bold text-reco-blue mb-2">Visão</h3>
+        <p class="text-gray-600">Ser referência em soluções de engenharia hidráulica, reconhecida pela inovação e excelência técnica.</p>
+      </div>
+      <div class="p-8 bg-gray-50 rounded-xl shadow-inner">
+        <i class="fas fa-shield-alt text-4xl text-reco-orange mb-4"></i>
+        <h3 class="text-2xl font-bold text-reco-blue mb-2">Valores</h3>
+        <p class="text-gray-600">Segurança, qualidade, responsabilidade e comprometimento com o cliente e o meio ambiente.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Função para mostrar a seção selecionada
-        function showSection(id) {
-            sections.forEach(section => {
-                section.classList.add('hidden'); // Ocultar todas as seções
-            });
-            document.getElementById(`${id}-section`).classList.remove('hidden'); // Mostrar a seção desejada
+<!-- Seção Serviços -->
+<section id="servicos" class="bg-reco-blue text-white py-16">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Nossos Serviços</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Cartão de Serviço: Sistemas Hidráulicos e Sanitários -->
+      <div class="bg-white text-reco-blue rounded-xl p-6 shadow-md text-center">
+        <i class="fas fa-tint mx-auto text-reco-orange mb-4 text-4xl"></i>
+        <h3 class="mt-4 text-xl font-semibold">Sistemas Hidráulicos e Sanitários</h3>
+        <p class="text-gray-600 mt-2">Inspeção e manutenção de sistemas hidráulicos e sanitários.</p>
+      </div>
+      <!-- Cartão de Serviço: Reparos e Instalações -->
+      <div class="bg-white text-reco-blue rounded-xl p-6 shadow-md text-center">
+        <i class="fas fa-wrench mx-auto text-reco-orange mb-4 text-4xl"></i>
+        <h3 class="mt-4 text-xl font-semibold">Reparos e Instalações</h3>
+        <p class="text-gray-600 mt-2">Reparos em geral e novas instalações para residências e empresas.</p>
+      </div>
+      <!-- Cartão de Serviço: Projetos de Arquitetura -->
+      <div class="bg-white text-reco-blue rounded-xl p-6 shadow-md text-center">
+        <i class="fas fa-compass mx-auto text-reco-orange mb-4 text-4xl"></i>
+        <h3 class="mt-4 text-xl font-semibold">Projetos de Arquitetura</h3>
+        <p class="text-gray-600 mt-2">Projetos de arquitetura e aprovação em órgãos competentes.</p>
+      </div>
+      <!-- Cartão de Serviço: Consultoria Técnica -->
+      <div class="bg-white text-reco-blue rounded-xl p-6 shadow-md text-center">
+        <i class="fas fa-phone mx-auto text-reco-orange mb-4 text-4xl"></i>
+        <h3 class="mt-4 text-xl font-semibold">Consultoria Técnica</h3>
+        <p class="text-gray-600 mt-2">Serviços de consultoria para otimizar projetos e solucionar problemas técnicos.</p>
+      </div>
+      <!-- Cartão de Serviço: Análise de Sistemas -->
+      <div class="bg-white text-reco-blue rounded-xl p-6 shadow-md text-center">
+        <i class="fas fa-clipboard-list mx-auto text-reco-orange mb-4 text-4xl"></i>
+        <h3 class="mt-4 text-xl font-semibold">Análise de Sistemas</h3>
+        <p class="text-gray-600 mt-2">Análise completa de sistemas existentes para identificar falhas e propor melhorias.</p>
+      </div>
+      <!-- Cartão de Serviço: Sistemas de Incêndio -->
+      <div class="bg-white text-reco-blue rounded-xl p-6 shadow-md text-center">
+        <i class="fas fa-handshake mx-auto text-reco-orange mb-4 text-4xl"></i>
+        <h3 class="mt-4 text-xl font-semibold">Sistemas de Incêndio</h3>
+        <p class="text-gray-600 mt-2">Instalação e manutenção de equipamentos de segurança contra incêndio e iluminação de emergência.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            // Atualizar os estados dos botões de navegação
-            navButtons.forEach(button => {
-                button.classList.remove('active', 'bg-sonda-blue', 'text-white');
-                button.classList.add('bg-gray-200', 'text-gray-800');
-            });
-            const activeButton = document.getElementById(`nav-${id}`);
-            activeButton.classList.add('active', 'bg-sonda-blue', 'text-white');
-            activeButton.classList.remove('bg-gray-200', 'text-gray-800');
+<!-- Seção Portfólio -->
+<section id="portfolio" class="max-w-7xl mx-auto px-4 py-16 text-center">
+  <div class="bg-white rounded-xl p-8 md:p-16 shadow-lg">
+    <h2 class="text-4xl md:text-5xl text-reco-blue font-bold mb-12">Nosso Portfólio</h2>
+    
+    <p class="mt-8 text-gray-700 leading-relaxed text-justify">
+      Confira alguns dos nossos projetos mais recentes. A nossa equipe é especializada em diversas áreas, desde a instalação de sistemas hidráulicos complexos até a manutenção preventiva e corretiva para garantir o bom funcionamento de suas instalações.
+    </p>
+  </div>
+</section>
+
+<!-- Seção de Contato -->
+<section id="contato" class="bg-reco-blue text-white py-16">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6">Entre em Contato</h2>
+    <p class="mb-6">Entre em contato por e-mail, WhatsApp ou pelo formulário abaixo:</p>
+    
+    <form id="contact-form" class="bg-white text-gray-900 rounded-2xl shadow-lg p-6 max-w-lg mx-auto">
+      <input type="text" name="nome" placeholder="Seu Nome" required class="w-full border p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-reco-orange" />
+      <input type="email" name="email" placeholder="Seu E-mail" required class="w-full border p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-reco-orange" />
+      <textarea name="mensagem" placeholder="Sua Mensagem" required class="w-full border p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-reco-orange"></textarea>
+      
+      <p id="form-message" class="hidden mb-4 font-semibold"></p>
+
+      <button type="submit" id="submit-button" class="w-full text-white font-bold px-6 py-3 rounded-2xl transition-colors duration-200 bg-reco-orange hover:bg-reco-orange-dark">
+        Enviar Mensagem
+      </button>
+    </form>
+
+    <div class="mt-8 space-y-2">
+      <p class="flex items-center justify-center"><i class="fas fa-envelope mr-2"></i> recosolucoes@gmail.com</p>
+      <p class="flex items-center justify-center"><i class="fas fa-phone mr-2"></i> (11) 99286-2276</p>
+      <a href="https://wa.me/5511992862276" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block bg-green-500 text-white font-bold px-6 py-3 rounded-2xl shadow-md hover:bg-green-600 transition-colors duration-200">
+        Fale no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Botões Utilitários Flutuantes -->
+<div id="floating-buttons" class="fixed bottom-4 right-4 flex flex-col items-end space-y-2 z-50 transition-opacity duration-300 opacity-0 pointer-events-none">
+  <!-- Botão do WhatsApp -->
+  <a href="https://wa.me/5511992862276" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white p-3 rounded-full shadow-lg transition-colors duration-200 hover:bg-green-600" aria-label="Fale conosco pelo WhatsApp">
+    <i class="fab fa-whatsapp text-2xl"></i>
+  </a>
+  <!-- Botão de Voltar ao Topo -->
+  <button id="back-to-top" class="bg-reco-blue text-white p-3 rounded-full shadow-lg transition-colors duration-200 hover:bg-reco-blue-dark" aria-label="Voltar ao topo">
+    <i class="fas fa-arrow-up text-2xl"></i>
+  </button>
+</div>
+
+<!-- Rodapé -->
+<footer class="bg-reco-blue text-white py-6 text-center">
+  <p class="text-sm">© <span id="current-year"></span> Reco Soluções - Todos os direitos reservados.</p>
+  <p class="text-xs text-gray-400 mt-1">Desenvolvido com ❤️</p>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Referências para elementos do DOM
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const sections = document.querySelectorAll('nav a[href^="#"]');
+    const backToTopButton = document.getElementById('back-to-top');
+    const floatingButtonsContainer = document.getElementById('floating-buttons');
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+    const submitButton = document.getElementById('submit-button');
+
+    // Carrossel
+    const carouselImagesContainer = document.getElementById('carousel-images');
+    const carouselDotsContainer = document.getElementById('carousel-dots');
+    // URLs de imagens de exemplo para o carrossel. Foram ajustadas para uma proporção 16:9.
+    const portfolioImages = [
+      { id: 1, url: 'reco.png', alt: 'Projetos' },
+      { id: 2, url: 'tubulacao_verde.png', alt: 'Instalação' },
+      { id: 3, url: 'equipamentos.png', alt: 'Manutenção'},
+    ];
+    let currentImageIndex = 0;
+    
+    // Insere as imagens e os pontos de navegação do carrossel no HTML
+    portfolioImages.forEach((image, index) => {
+      const img = document.createElement('img');
+      img.src = image.url;
+      img.alt = image.alt;
+      img.className = 'absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out carousel-image';
+      if (index === 0) {
+        img.classList.add('opacity-100');
+      }
+      carouselImagesContainer.appendChild(img);
+
+      const dot = document.createElement('button');
+      dot.className = 'h-3 w-3 rounded-full transition-colors duration-300 bg-gray-400';
+      if (index === 0) {
+        dot.classList.add('bg-reco-orange');
+      }
+      dot.addEventListener('click', () => showImage(index));
+      carouselDotsContainer.appendChild(dot);
+    });
+
+    // Lógica para mostrar a imagem e o ponto de navegação corretos
+    function showImage(index) {
+      const images = carouselImagesContainer.querySelectorAll('img');
+      const dots = carouselDotsContainer.querySelectorAll('button');
+      
+      images.forEach((img, i) => {
+        img.classList.remove('opacity-100');
+        if (i === index) {
+          img.classList.add('opacity-100');
         }
+      });
 
-        // Função para renderizar as categorias de FAQ
-        function renderFaqCategories() {
-            faqCategoriesContainer.innerHTML = ''; // Limpar categorias existentes
-            faqsData.forEach(faqCategory => {
-                const categoryDiv = document.createElement('div');
-                // Adicionando classes para controlar a largura do item e garantir que ele se ajuste e centralize
-                categoryDiv.className = 'faq-category-item p-4 bg-white rounded-lg shadow-md flex items-center justify-center text-center font-medium text-gray-700 border border-gray-200 hover:border-sonda-blue w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.666rem)]';
-                categoryDiv.textContent = faqCategory.category;
-                categoryDiv.onclick = () => showFaqList(faqCategory);
-                faqCategoriesContainer.appendChild(categoryDiv);
-            });
+      dots.forEach((dot, i) => {
+        dot.classList.remove('bg-reco-orange');
+        dot.classList.add('bg-gray-400');
+        if (i === index) {
+          dot.classList.remove('bg-gray-400');
+          dot.classList.add('bg-reco-orange');
         }
+      });
+      currentImageIndex = index;
+    }
 
-        // Função para mostrar a lista de perguntas e respostas para uma categoria
-        function showFaqList(category) {
-            faqCategoriesContainer.classList.add('hidden'); // Ocultar categorias
-            faqListContainer.classList.remove('hidden'); // Mostrar lista de FAQ
-            currentCategoryTitle.textContent = category.category; // Definir título da categoria
+    // Configura a transição automática do carrossel
+    setInterval(() => {
+      const nextIndex = (currentImageIndex + 1) % portfolioImages.length;
+      showImage(nextIndex);
+    }, 3000);
+    
+    // Mostra a primeira imagem ao carregar a página
+    showImage(0);
 
-            questionsAnswersContainer.innerHTML = ''; // Limpar perguntas existentes
+    // Lógica para o menu mobile
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
 
-            category.questions.forEach((item, index) => {
-                const questionDiv = document.createElement('div');
-                questionDiv.className = 'faq-question p-4 bg-white rounded-lg shadow-sm mb-3 border border-gray-200 hover:border-sonda-blue';
-                questionDiv.innerHTML = `<h4 class="font-semibold text-gray-800">${item.question} <span class="float-right text-gray-500">+</span></h4>`;
-                
-                const answerDiv = document.createElement('div');
-                answerDiv.className = 'faq-answer text-gray-600 mt-2 px-4 py-2 bg-blue-50 rounded-lg hidden'; /* Alterado de indigo-50 para blue-50 */
-                answerDiv.innerHTML = item.answer; // Usar innerHTML para links
-
-                questionDiv.onclick = () => {
-                    // Ocultar outras respostas abertas na mesma categoria (opcional, para UX mais limpa)
-                    document.querySelectorAll('.faq-answer').forEach(ans => {
-                        if (ans !== answerDiv) {
-                            ans.classList.remove('show');
-                            ans.classList.add('hidden');
-                            ans.previousElementSibling.querySelector('span').textContent = '+';
-                        }
-                    });
-
-                    // Alternar a visibilidade da resposta atual
-                    if (answerDiv.classList.contains('hidden')) {
-                        answerDiv.classList.remove('hidden');
-                        answerDiv.classList.add('show');
-                        questionDiv.querySelector('span').textContent = '-';
-                    } else {
-                        answerDiv.classList.remove('show');
-                        answerDiv.classList.add('hidden');
-                        questionDiv.querySelector('span').textContent = '+';
-                    }
-                };
-                
-                questionsAnswersContainer.appendChild(questionDiv);
-                questionsAnswersContainer.appendChild(answerDiv);
-            });
+    // Lógica para a rolagem suave
+    sections.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          window.scrollTo({
+            top: targetSection.offsetTop,
+            behavior: 'smooth'
+          });
+          // Esconde o menu mobile após a rolagem
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
         }
+      });
+    });
 
-        // Função para voltar à visualização de categorias
-        function showCategories() {
-            faqListContainer.classList.add('hidden'); // Ocultar lista de FAQ
-            faqCategoriesContainer.classList.remove('hidden'); // Mostrar categorias
-            // Ocultar todas as respostas ao retornar às categorias
-            document.querySelectorAll('.faq-answer').forEach(ans => {
-                ans.classList.remove('show');
-                ans.classList.add('hidden');
-            });
-            document.querySelectorAll('.faq-question span').forEach(span => {
-                span.textContent = '+';
-            });
-        }
+    // Lógica do botão "Voltar ao Topo"
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        floatingButtonsContainer.classList.remove('opacity-0', 'pointer-events-none');
+        floatingButtonsContainer.classList.add('opacity-100');
+      } else {
+        floatingButtonsContainer.classList.remove('opacity-100');
+        floatingButtonsContainer.classList.add('opacity-0', 'pointer-events-none');
+      }
+    });
 
-        // Função para calcular a data de pagamento da rescisão
-        function calculateRescisaoDate() {
-            dateErrorDisplay.classList.add('hidden'); // Ocultar mensagens de erro anteriores
-            rescisaoPaymentDateDisplay.classList.add('hidden'); // Ocultar resultado anterior
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
 
-            const dismissalDateStr = dismissalDateInput.value;
-            if (!dismissalDateStr) {
-                dateErrorDisplay.textContent = 'Por favor, informe a data de demissão.';
-                dateErrorDisplay.classList.remove('hidden');
-                return;
-            }
+    // Lógica para o formulário de contato
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      submitButton.disabled = true;
+      submitButton.innerText = 'Enviando...';
+      formMessage.classList.add('hidden');
 
-            const dismissalDate = new Date(dismissalDateStr + 'T00:00:00'); // Adicionar T00:00:00 para evitar problemas de fuso horário
-            if (isNaN(dismissalDate.getTime())) {
-                dateErrorDisplay.textContent = 'Data de demissão inválida. Por favor, use o formato correto.';
-                dateErrorDisplay.classList.remove('hidden');
-                return;
-            }
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
 
-            // Adicionar 9 dias à data de demissão
-            const paymentDate = new Date(dismissalDate);
-            paymentDate.setDate(dismissalDate.getDate() + 9);
-
-            // Formatar a data para DD/MM/YYYY
-            const formattedPaymentDate = paymentDate.toLocaleDateString('pt-BR');
-
-            rescisaoPaymentDateDisplay.textContent = `Será paga até o dia ${formattedPaymentDate}.`;
-            rescisaoPaymentDateDisplay.classList.remove('hidden');
-        }
-
-        // Função para renderizar o status de pagamento
-        function renderPaymentStatus() {
-            paymentStatusDiv.innerHTML = ''; // Limpar conteúdo existente
-            
-            // Adicionar informações de pagamento fixas
-            paymentInfoTemplates.forEach(item => {
-                const statusItem = document.createElement('p');
-                statusItem.className = 'bg-white p-3 rounded-md shadow-sm border border-gray-200';
-                statusItem.innerHTML = `<strong class="text-gray-800">${item.description}:</strong> <span class="text-gray-700">${item.status}</span>`;
-                paymentStatusDiv.appendChild(statusItem);
-            });
-        }
-
-        // Inicializar o aplicativo quando a página carregar
-        document.addEventListener('DOMContentLoaded', () => {
-            renderFaqCategories(); // Carregar categorias de FAQ
-            renderPaymentStatus(); // Carregar status de pagamento
-            showSection('faqs'); // Definir a seção de FAQs como inicial
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/recosolucoes@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify(data),
         });
-    </script>
+
+        if (response.ok) {
+          formMessage.innerText = 'Mensagem enviada com sucesso! Obrigado pelo contato.';
+          formMessage.classList.remove('hidden');
+          formMessage.classList.add('text-green-500');
+          contactForm.reset();
+        } else {
+          formMessage.innerText = 'Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.';
+          formMessage.classList.remove('hidden');
+          formMessage.classList.add('text-red-500');
+        }
+      } catch (error) {
+        console.error("Erro ao enviar o formulário:", error);
+        formMessage.innerText = 'Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.';
+        formMessage.classList.remove('hidden');
+        formMessage.classList.add('text-red-500');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.innerText = 'Enviar Mensagem';
+      } 
+    });
+
+    // Atualiza o ano no rodapé
+    document.getElementById('current-year').innerText = new Date().getFullYear();
+  });
+</script>
+
 </body>
 </html>
