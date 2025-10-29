@@ -5,21 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reco Soluções - Instalação e Manutenção</title>
   
-  <!-- Ícone da guia do navegador -->
-  <link rel="icon" href="C:\Users\gustavo.torres\recosolucoes\logo.png" type="image/png">
+  <link rel="icon" href="/img/logo.png" type="image/png">
 
-  <!-- Carrega a fonte Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   
-  <!-- Carrega os ícones do Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
-  <!-- Carrega o Tailwind CSS para o design responsivo -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Define as cores e fonte personalizadas do Tailwind -->
   <style>
     :root {
       /* Novas cores fornecidas pelo cliente */
@@ -74,12 +69,10 @@
 </head>
 <body class="bg-gray-50 text-gray-900">
 
-<!-- Cabeçalho -->
 <header class="bg-white text-gray-900 shadow-md sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
     <div class="flex items-center space-x-2">
-      <!-- Logo da empresa -->
-      <img src="C:\Users\gustavo.torres\recosolucoes\logo.png" alt="Reco Soluções" class="h-16" />
+      <img src="/img/logo.png" alt="Reco Soluções" class="h-16" />
     </div>
     <nav class="hidden md:flex space-x-6 text-lg">
       <a href="#home" class="text-reco-blue hover:text-reco-orange transition-colors duration-200">Início</a>
@@ -92,7 +85,6 @@
       <i class="fas fa-bars text-2xl"></i>
     </button>
   </div>
-  <!-- Menu Mobile -->
   <nav id="mobile-menu" class="hidden md:hidden bg-reco-blue text-white px-4 py-2 space-y-2 absolute w-full transition-all duration-200 ease-in-out">
     <a href="#home" class="block w-full p-2 text-left hover:bg-reco-orange rounded">Início</a>
     <a href="#sobre" class="block w-full p-2 text-left hover:bg-reco-orange rounded">Sobre</a>
@@ -102,17 +94,13 @@
   </nav>
 </header>
   
-<!-- Seção Principal (Hero) com Carrossel -->
 <section id="home" class="relative w-full overflow-hidden text-white flex items-center justify-center min-h-[60vh]">
   
-  <!-- Carrossel de fundo -->
   <div class="absolute inset-0 w-full h-full">
     <div id="carousel-images" class="flex transition-transform duration-500 ease-in-out w-full h-full">
-      <!-- As imagens serão inseridas pelo JavaScript -->
-    </div>
+      </div>
   </div>
 
-  <!-- Sobreposição de conteúdo para o texto e botão -->
   <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center p-4 text-center">
     <h1 class="text-4xl md:text-6xl font-bold">Reco Soluções</h1>
     <p class="mt-4 text-lg md:text-2xl font-light">Projetos, Instalação e Manutenção Hidráulica.</p>
@@ -121,13 +109,11 @@
     </a>
   </div>
   
-  <!-- Navegação por pontos -->
   <div id="carousel-dots" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
   </div>
 
 </section>
 
-<!-- Seção Sobre Nós -->
 <section id="sobre" class="max-w-7xl mx-auto px-4 py-16">
   <div class="bg-white rounded-xl p-8 md:p-16 shadow-lg text-center">
     <h2 class="text-4xl md:text-5xl text-reco-blue font-bold mb-12">Sobre Nós</h2>
@@ -139,11 +125,10 @@
         <a href="#contato" class="bg-reco-blue text-white font-bold py-3 px-6 rounded-full transition-transform duration-200 hover:scale-105">Fale Conosco</a>
       </div>
       <div class="flex-1">
-        <img src="C:\Users\gustavo.torres\recosolucoes\logo-reco.png" alt="Equipe Reco Soluções" class="w-full h-auto rounded-xl shadow-lg" />
+        <img src="/img/logo-reco.png" alt="Equipe Reco Soluções" class="w-full h-auto rounded-xl shadow-lg" />
       </div>
     </div>
     
-    <!-- Missão, Visão, Valores -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 text-center">
       <div class="p-8 bg-gray-50 rounded-xl shadow-inner">
         <i class="fas fa-handshake text-4xl text-reco-orange mb-4"></i>
@@ -164,42 +149,35 @@
   </div>
 </section>
 
-<!-- Seção Serviços -->
 <section id="servicos" class="bg-reco-blue text-white py-16">
   <div class="max-w-7xl mx-auto px-4">
     <h2 class="text-3xl font-bold text-center mb-12">Nossos Serviços</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Cartão de Serviço: Sistemas Hidráulicos e Sanitários -->
       <div class="bg-white text-reco-blue rounded-xl p-6 shadow-md text-center">
         <i class="fas fa-tint mx-auto text-reco-orange mb-4 text-4xl"></i>
         <h3 class="mt-4 text-xl font-semibold">Sistemas Hidráulicos e Sanitários</h3>
         <p class="text-gray-600 mt-2">Inspeção e manutenção de sistemas hidráulicos e sanitários.</p>
       </div>
-      <!-- Cartão de Serviço: Reparos e Instalações -->
       <div class="bg-white text-reco-blue rounded-xl p-6 shadow-md text-center">
         <i class="fas fa-wrench mx-auto text-reco-orange mb-4 text-4xl"></i>
         <h3 class="mt-4 text-xl font-semibold">Reparos e Instalações</h3>
         <p class="text-gray-600 mt-2">Reparos em geral e novas instalações para residências e empresas.</p>
       </div>
-      <!-- Cartão de Serviço: Projetos de Arquitetura -->
       <div class="bg-white text-reco-blue rounded-xl p-6 shadow-md text-center">
         <i class="fas fa-compass mx-auto text-reco-orange mb-4 text-4xl"></i>
         <h3 class="mt-4 text-xl font-semibold">Projetos de Arquitetura</h3>
         <p class="text-gray-600 mt-2">Projetos de arquitetura e aprovação em órgãos competentes.</p>
       </div>
-      <!-- Cartão de Serviço: Consultoria Técnica -->
       <div class="bg-white text-reco-blue rounded-xl p-6 shadow-md text-center">
         <i class="fas fa-phone mx-auto text-reco-orange mb-4 text-4xl"></i>
         <h3 class="mt-4 text-xl font-semibold">Consultoria Técnica</h3>
         <p class="text-gray-600 mt-2">Serviços de consultoria para otimizar projetos e solucionar problemas técnicos.</p>
       </div>
-      <!-- Cartão de Serviço: Análise de Sistemas -->
       <div class="bg-white text-reco-blue rounded-xl p-6 shadow-md text-center">
         <i class="fas fa-clipboard-list mx-auto text-reco-orange mb-4 text-4xl"></i>
         <h3 class="mt-4 text-xl font-semibold">Análise de Sistemas</h3>
         <p class="text-gray-600 mt-2">Análise completa de sistemas existentes para identificar falhas e propor melhorias.</p>
       </div>
-      <!-- Cartão de Serviço: Sistemas de Incêndio -->
       <div class="bg-white text-reco-blue rounded-xl p-6 shadow-md text-center">
         <i class="fas fa-handshake mx-auto text-reco-orange mb-4 text-4xl"></i>
         <h3 class="mt-4 text-xl font-semibold">Sistemas de Incêndio</h3>
@@ -209,7 +187,6 @@
   </div>
 </section>
 
-<!-- Seção Portfólio -->
 <section id="portfolio" class="max-w-7xl mx-auto px-4 py-16 text-center">
   <div class="bg-white rounded-xl p-8 md:p-16 shadow-lg">
     <h2 class="text-4xl md:text-5xl text-reco-blue font-bold mb-12">Nosso Portfólio</h2>
@@ -220,7 +197,6 @@
   </div>
 </section>
 
-<!-- Seção de Contato -->
 <section id="contato" class="bg-reco-blue text-white py-16">
   <div class="max-w-6xl mx-auto px-6 text-center">
     <h2 class="text-3xl font-bold mb-6">Entre em Contato</h2>
@@ -248,19 +224,15 @@
   </div>
 </section>
 
-<!-- Botões Utilitários Flutuantes -->
 <div id="floating-buttons" class="fixed bottom-4 right-4 flex flex-col items-end space-y-2 z-50 transition-opacity duration-300 opacity-0 pointer-events-none">
-  <!-- Botão do WhatsApp -->
   <a href="https://wa.me/5511992862276" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white p-3 rounded-full shadow-lg transition-colors duration-200 hover:bg-green-600" aria-label="Fale conosco pelo WhatsApp">
     <i class="fab fa-whatsapp text-2xl"></i>
   </a>
-  <!-- Botão de Voltar ao Topo -->
   <button id="back-to-top" class="bg-reco-blue text-white p-3 rounded-full shadow-lg transition-colors duration-200 hover:bg-reco-blue-dark" aria-label="Voltar ao topo">
     <i class="fas fa-arrow-up text-2xl"></i>
   </button>
 </div>
 
-<!-- Rodapé -->
 <footer class="bg-reco-blue text-white py-6 text-center">
   <p class="text-sm">© <span id="current-year"></span> Reco Soluções - Todos os direitos reservados.</p>
   <p class="text-xs text-gray-400 mt-1">Desenvolvido por Gustavo Torres</p>
@@ -281,11 +253,11 @@
     // Carrossel
     const carouselImagesContainer = document.getElementById('carousel-images');
     const carouselDotsContainer = document.getElementById('carousel-dots');
-    // URLs de imagens de exemplo para o carrossel. Foram ajustadas para uma proporção 16:9.
+    // URLs de imagens de exemplo para o carrossel. Foram CORRIGIDAS para /img/
     const portfolioImages = [
-      { id: 1, url: 'reco.png', alt: 'Projetos' },
-      { id: 2, url: 'tubulacao_verde.png', alt: 'Instalação' },
-      { id: 3, url: 'equipamentos.png', alt: 'Manutenção'},
+      { id: 1, url: '/img/reco.png', alt: 'Projetos' },
+      { id: 2, url: '/img/tubulacao_verde.png', alt: 'Instalação' },
+      { id: 3, url: '/img/equipamentos.png', alt: 'Manutenção'},
     ];
     let currentImageIndex = 0;
     
